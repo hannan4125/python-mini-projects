@@ -1,0 +1,90 @@
+# CALCULATOR USING PYTHON..........................
+
+def add(a,b):
+    return a + b
+
+def subtract(a,b):
+    return a - b
+
+def multiply(a,b):
+    return a * b
+
+def divide(a,b):
+    if b != 0:
+        return a / b  
+    else:
+        print("❌ Error: Can't divide by zero.")
+    
+def power(a,b):
+    return a ** b 
+
+def remainder(a,b):
+    return a % b   
+
+def calculator():
+    
+    history = []
+    
+    while True:
+        print("\n----- Simple Calculator -----")
+        print("Options: +, -, *, /, **, %, 'history', 'clear all', 'exit'")        
+
+        choice = input("Enter operation: ").strip()
+
+        
+        if choice == "exit":
+            print("Goodbye!")
+            break
+        
+        elif choice == "history":
+            if not history:
+                print("📜 No calculations yet.")
+            else:
+                print("\n📜 Calculation History:")
+                for entry in history:
+                    print(entry)
+            continue
+        
+        elif choice == "clear all":
+            if history:
+                history.clear()
+                print("Cleared history.")
+                continue
+            if not history:
+                print("Nothing found!")
+        
+        
+        elif choice not in ['+', '-', '*', '/', '**', '%']:
+            print("❌ Invalid input!")
+            continue
+        
+        
+        try:
+            num1 = float(input("Enter first number: "))
+            num2 = float(input("Enter second number: "))
+        except ValueError:
+            print("❌ Invalid number! Please enter numeric values.")
+            continue    
+    
+    
+        if choice == "+":
+            result = add(num1, num2)
+        elif choice == "-":
+            result = subtract(num1, num2)
+        elif choice == "*":
+            result = multiply(num1, num2)
+        elif choice == "/":
+            result = divide(num1, num2)
+        elif choice == "**":
+            result = power(num1, num2)
+        elif choice == "%":
+            result = remainder(num1, num2)
+        
+        
+        entry = f"{num1} {choice} {num2} = {result}"
+        history.append(entry)
+         
+        print(f"✅ Result: {result}")
+    
+    
+calculator()    
